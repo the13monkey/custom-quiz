@@ -1,3 +1,20 @@
+/**
+* Plugin Admin Area Styles
+*/
+
+.input_field, label {
+    width: 100%;
+    margin-top: 10px; 
+    font-size: 18px; 
+    padding: 10px; 
+    border-radius: 4px; 
+    margin-bottom: 30px; 
+}
+
+
+/**
+* Plugin Frontend Styles
+*/
 .selected {
     border: 3px solid lightcoral;
 }
@@ -11,12 +28,11 @@
     width: 800px; 
     height: 600px;
     border: 1px solid #f1f1f1;
-    position: fixed; 
-    top: 50%; 
-    left: 50%; 
-    margin-top: -300px;
-    margin-left: -400px;
-    z-index: 0;
+    position: relative; 
+    margin-top: 80px;
+    margin-bottom: 80px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #quiz-title {
@@ -26,6 +42,9 @@
     background-color: lightcoral; /* custom */
     color: #fff; /* custom */
     font-style: italic; /* custom */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
 
 #quiz-title h1 {

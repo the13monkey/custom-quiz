@@ -1,4 +1,29 @@
 jQuery(document).ready(function($){
+    //Admin Scripts
+    var add_btn_q1_a1 = document.getElementById('image-upload-q1-a1');
+    var delete_btn_q1_a1 = document.getElementById('image-delete-q1-a1');
+    var image_q1_a1 = document.getElementById('img-tag-q1-a1');
+    var hidden_btn_q1_a1 = document.getElementById('hidden-btn-q1-a1');
+    var uploader_q1_a1 = wp.media({
+        title: 'Select an image for Choice 1 of Question 1',
+        button: {
+            text: 'Upload'
+        },
+        multiple: false
+    });
+    add_btn_q1_a1.addEventListener('click', function(){
+        if (uploader_q1_a1) {
+            uploader_q1_a1.open();
+        }
+    });
+    uploader_q1_a1.on('select', function(){
+        var attachment_q1_a1 = uploader_q1_a1.state().get('selection').first().toJSON();
+        image_q1_a1.setAttribute('src', attachment_q1_a1.url); 
+        hidden_btn_q1_a1.setAttribute('value', JSON.stringify([{id: attachment_q1_a1.id, url: attachment_q1_a1.url}]));
+    });
+
+
+    //UI JS Scripts
 
     $('#quiz-result').hide();
     $('#quiz-end').hide();

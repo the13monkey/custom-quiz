@@ -9,6 +9,8 @@
 
     defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+    add_action('init', 'wp_enqueue_media');
+
     function custom_quiz_builder() {
         register_post_type('Quiz',
             array(
@@ -82,15 +84,32 @@
         $answer_two_question_two = get_post_meta($post->ID, 'answer_two_two', true);
         $answer_one_question_three = get_post_meta($post->ID, 'answer_one_three', true);
         $answer_two_question_three = get_post_meta($post->ID, 'answer_two_three', true);
+
 ?>
     <h3>Answers to Question 1</h3>
     <div class="answer-block">
         <label>Choice 1</label>
         <input type="text" name="answer_one_one" placeholder="Choice 1 of Question 1" class="input_field" value="<?php print $answer_one_question_one; ?>">
+        <div class="image-wrapper">
+            <div>
+                <img class="image-tag" id="img-tag-q1-a1">
+            </div>
+            <input type="hidden" id="hidden-btn-q1-a1" name="image_data_q1_a1">
+            <input type="button" id="image-upload-q1-a1" class="button" value="Add Image">
+            <input type="button" id="image-delete-q1-a1" class="button" value="Remove Image">
+        </div>
     </div>
     <div class="answer-block">
         <label>Choice 2</label>
         <input type="text" name="answer_two_one" placeholder="Choice 2 of Question 1" class="input_field" value="<?php print $answer_two_question_one; ?>">
+        <div class="image-wrapper">
+            <div>
+                <img class="image-tag" id="img-tag-q1-a2">
+            </div>
+            <input type="hidden" id="hidden-btn-q1-a2" name="image_data_q1_a2">
+            <input type="button" id="image-upload-q1-a2" class="button" value="Add Image">
+            <input type="button" id="image-delete-q1-a2" class="button" value="Remove Image">
+        </div>
     </div>
     <h3>Answers to Question 2</h3>
     <div class="answer-block">

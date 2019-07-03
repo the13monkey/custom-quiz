@@ -10,10 +10,20 @@
     border-radius: 4px; 
     margin-bottom: 30px; 
 }
+.answer-block .input_field {
+    margin-bottom: 5px !important; 
+}
 .answer-block {
     width: 48%; 
     display: inline-block; 
     vertical-align: top; 
+}
+.image-tag {
+    width: 250px !important; 
+    height: auto !important; 
+}
+.image-wrapper {
+    margin-bottom: 30px; 
 }
 
 /**

@@ -93,48 +93,60 @@
 
         //Script to upload the images 
     //    wp_nonce_field(basename(__FILE__), 'img_q1_a1_nonce');  
-        $save_image_q1_a1 = get_post_meta($post->ID, 'image_answer1_question1', true);
-        $upload_image_q1_a1_array = [
-            'id' => $save_image_q1_a1["id"],
-            'src' => $save_image_q1_a1["url"]
-        ];
-        wp_localize_script('admin', 'upload_image_q1_a1', $upload_image_q1_a1_array);
+        if(metadata_exists('post', $post->ID, 'image_answer1_question1')) {
+            $save_image_q1_a1 = get_post_meta($post->ID, 'image_answer1_question1', true);
+            $upload_image_q1_a1_array = [
+                'id' => $save_image_q1_a1["id"],
+                'src' => $save_image_q1_a1["url"]
+            ];
+            wp_localize_script('admin', 'upload_image_q1_a1', $upload_image_q1_a1_array);
+        }
         
-        $save_image_q1_a2 = get_post_meta($post->ID, 'image_answer2_question1', true);
-        $upload_image_q1_a2_array = [
-            'id' => $save_image_q1_a2['id'],
-            'src' => $save_image_q1_a2['url']
-        ];
-        wp_localize_script('admin', 'upload_image_q1_a2', $upload_image_q1_a2_array);
-
-        $save_image_q2_a1 = get_post_meta($post->ID, 'image_answer1_question2', true);
-        $upload_image_q2_a1_array = [
-            'id' => $save_image_q2_a1['id'],
-            'src' => $save_image_q2_a1['url']
-        ];
-        wp_localize_script('admin', 'upload_image_q2_a1', $upload_image_q2_a1_array);
-
-        $save_image_q2_a2 = get_post_meta($post->ID, 'image_answer2_question2', true);
-        $upload_image_q2_a2_array = [
-            'id' => $save_image_q2_a2['id'],
-            'src' => $save_image_q2_a2['url']
-        ];
-        wp_localize_script('admin', 'upload_image_q2_a2', $upload_image_q2_a2_array);
-
-        $save_image_q3_a1 = get_post_meta($post->ID, 'image_answer1_question3', true);
-        $upload_image_q3_a1_array = [
-            'id' => $save_image_q3_a1['id'],
-            'src' => $save_image_q3_a1['url']
-        ];
-        wp_localize_script('admin', 'upload_image_q3_a1', $upload_image_q3_a1_array);
-
-        $save_image_q3_a2 = get_post_meta($post->ID, 'image_answer2_question3', true);
-        $upload_image_q3_a2_array = [
-            'id' => $save_image_q3_a2['id'],
-            'src' => $save_image_q3_a2['url']
-        ];
-        wp_localize_script('admin', 'upload_image_q3_a2', $upload_image_q3_a2_array);
-
+        if(metadata_exists('post', $post->ID, 'image_answer2_question1')) {
+            $save_image_q1_a2 = get_post_meta($post->ID, 'image_answer2_question1', true);
+            $upload_image_q1_a2_array = [
+                'id' => $save_image_q1_a2['id'],
+                'src' => $save_image_q1_a2['url']
+            ];
+            wp_localize_script('admin', 'upload_image_q1_a2', $upload_image_q1_a2_array);
+        }
+        
+        if(metadata_exists('post', $post->ID, 'image_answer1_question2')) {
+            $save_image_q2_a1 = get_post_meta($post->ID, 'image_answer1_question2', true);
+            $upload_image_q2_a1_array = [
+                'id' => $save_image_q2_a1['id'],
+                'src' => $save_image_q2_a1['url']
+            ];
+            wp_localize_script('admin', 'upload_image_q2_a1', $upload_image_q2_a1_array);
+        }
+        
+        if(metadata_exists('post', $post->ID, 'image_answer2_question2')) {
+            $save_image_q2_a2 = get_post_meta($post->ID, 'image_answer2_question2', true);
+            $upload_image_q2_a2_array = [
+                'id' => $save_image_q2_a2['id'],
+                'src' => $save_image_q2_a2['url']
+            ];
+            wp_localize_script('admin', 'upload_image_q2_a2', $upload_image_q2_a2_array);
+        }
+        
+        if(metadata_exists('post', $post->ID, 'image_answer1_question3')) {
+            $save_image_q3_a1 = get_post_meta($post->ID, 'image_answer1_question3', true);
+            $upload_image_q3_a1_array = [
+                'id' => $save_image_q3_a1['id'],
+                'src' => $save_image_q3_a1['url']
+            ];
+            wp_localize_script('admin', 'upload_image_q3_a1', $upload_image_q3_a1_array);
+        }
+        
+        if(metadata_exists('post', $post->ID, 'image_answer2_question3')) {
+            $save_image_q3_a2 = get_post_meta($post->ID, 'image_answer2_question3', true);
+            $upload_image_q3_a2_array = [
+                'id' => $save_image_q3_a2['id'],
+                'src' => $save_image_q3_a2['url']
+            ];
+            wp_localize_script('admin', 'upload_image_q3_a2', $upload_image_q3_a2_array);
+        }
+        
         if(metadata_exists('post', $post->ID, 'is_update_q1_a1')) {
             $is_update_q1_a1 == get_post_meta($post->ID, 'is_update_q1_a1', true);
         } else {
@@ -478,21 +490,48 @@
         $answer_q3_a1 = get_post_meta($output_id, 'answer_one_three', true);
         $answer_q3_a2 = get_post_meta($output_id, 'answer_two_three', true);
         
-        $image_array_q1_a1 = get_post_meta($output_id, 'image_answer1_question1', true);
-        $image_url_q1_a1 = $image_array_q1_a1["url"]; 
-        $image_array_q1_a2 = get_post_meta($output_id, 'image_answer2_question1', true);
-        $image_url_q1_a2 = $image_array_q1_a2["url"];
+        if(metadata_exists('post', $post->ID, 'image_answer1_question1')) {
+            $image_array_q1_a1 = get_post_meta($output_id, 'image_answer1_question1', true);
+            $image_url_q1_a1 = $image_array_q1_a1["url"]; 
+        } else {
+            $image_url_q1_a1 = "";
+        }
 
-        $image_array_q2_a1 = get_post_meta($output_id, 'image_answer1_question2', true);
-        $image_url_q2_a1 = $image_array_q2_a1["url"];
-        $image_array_q2_a2 = get_post_meta($output_id, 'image_answer2_question2', true);
-        $image_url_q2_a2 = $image_array_q2_a2["url"];
+        if(metadata_exists('post', $post->ID, 'image_answer2_question1')) {
+            $image_array_q1_a2 = get_post_meta($output_id, 'image_answer2_question1', true);
+            $image_url_q1_a2 = $image_array_q1_a2["url"];
+        } else {
+            $image_url_q1_a2 = "";
+        }
+        
+        if(metadata_exists('post', $post->ID, 'image_answer1_question2')) {
+            $image_array_q2_a1 = get_post_meta($output_id, 'image_answer1_question2', true);
+            $image_url_q2_a1 = $image_array_q2_a1["url"];
+        } else {
+            $image_url_q2_a1 = "";
+        }
 
-        $image_array_q3_a1 = get_post_meta($output_id, 'image_answer1_question3', true);
-        $image_url_q3_a1 = $image_array_q3_a1["url"];
-        $image_array_q3_a2 = get_post_meta($output_id, 'image_answer2_question3', true);
-        $image_url_q3_a2 = $image_array_q3_a2["url"];
+        if(metadata_exists('post', $post->ID, 'image_answer2_question2')) {
+            $image_array_q2_a2 = get_post_meta($output_id, 'image_answer2_question2', true);
+            $image_url_q2_a2 = $image_array_q2_a2["url"];
+        } else {
+            $image_url_q2_a2 = "";
+        }
+        
+        if(metadata_exists('post', $post->ID, 'image_answer1_question3')) {
+            $image_array_q3_a1 = get_post_meta($output_id, 'image_answer1_question3', true);
+            $image_url_q3_a1 = $image_array_q3_a1["url"];
+        } else {
+            $image_url_q3_a1 = "";
+        }
 
+        if(metadata_exists('post', $post->ID, 'image_answer2_question3')) {
+            $image_array_q3_a2 = get_post_meta($output_id, 'image_answer2_question3', true);
+            $image_url_q3_a2 = $image_array_q3_a2["url"];
+        } else {
+            $image_url_q3_a2 = "";
+        }
+        
         $questions = [
             [
                 "question" => $question_one,
